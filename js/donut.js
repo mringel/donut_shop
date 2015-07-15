@@ -93,6 +93,33 @@ var createTable = function(){
 document.getElementById('donutDiv').appendChild(tbl);
 };
 
+function addNew() {
+  loc = prompt('Location Name?');
+  min = prompt('Minimum customers per hour?');
+  max = prompt('Maximum customers per hour?');
+  average = prompt('Average donuts purchased per customer?');
+  // location.replace(/\s/g, '');
+  var newLoc = new DonutShoppe(loc, {minCustomers: min, maxCustomers: max, averagePerCustomer: average});
+  addLocation(newLoc);
+}
+
+function addLocation(store) {
+  allLocations.push(store);
+}
+
+function updateTable () {
+  var tbl = document.getElementById('donutTable');
+
+  // delete previous table
+  while (tbl.rows.length > 2) {
+    tbl.deleteRow(-1);
+  }
+  // and rebuild
+  for (var i = 0; i < allLocations.length; i++) {
+    allLocations[i].render();
+  }
+}
+
 createTable();
 
 var downtown  = new DonutShoppe('Downtown', {minCustomers: 8, maxCustomers: 43, averagePerCustomer: 4.5});
@@ -100,6 +127,9 @@ var capHill   = new DonutShoppe('Capitol Hill', {minCustomers: 4, maxCustomers: 
 var slu       = new DonutShoppe('South Lake Union', {minCustomers: 9, maxCustomers: 23, averagePerCustomer: 6.33});
 var wedgewood = new DonutShoppe('Wedgewood', {minCustomers: 2, maxCustomers: 28, averagePerCustomer: 1.25});
 var ballard   = new DonutShoppe('Ballard', {minCustomers: 8, maxCustomers: 58, averagePerCustomer: 3.75});
+
+var allLocations = [downtown, capHill, slu, wedgewood, ballard]
+
 
 wedgewood.render();
 slu.render();
