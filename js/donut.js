@@ -98,7 +98,6 @@ function addNew() {
   min = prompt('Minimum customers per hour?');
   max = prompt('Maximum customers per hour?');
   average = prompt('Average donuts purchased per customer?');
-  // location.replace(/\s/g, '');
   var newLoc = new DonutShoppe(loc, {minCustomers: min, maxCustomers: max, averagePerCustomer: average});
   addLocation(newLoc);
 }
@@ -130,10 +129,6 @@ var ballard   = new DonutShoppe('Ballard', {minCustomers: 8, maxCustomers: 58, a
 
 var allLocations = [downtown, capHill, slu, wedgewood, ballard]
 
+updateTable();
 
-wedgewood.render();
-slu.render();
-capHill.render();
-downtown.render();
-ballard.render();
 
