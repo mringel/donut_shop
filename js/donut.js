@@ -2,7 +2,7 @@ var DonutShoppe = function(location, options) {
   this.locationName = location;
   this.minCustomers = options.minCustomers;
   this.maxCustomers = options.maxCustomers;
-  this.averagePerCustumer = options.averagePerCustomer;
+  this.averagePerCustomer = options.averagePerCustomer;
   this.opens = options.opens || 600;
   this.closes = options.closes || 1800;
   this.hoursOpen = (this.closes - this.opens)/100;
@@ -10,11 +10,11 @@ var DonutShoppe = function(location, options) {
 
 DonutShoppe.prototype.hourForecast = function() {
   var customers = this.generateRandom(this.minCustomers,this.maxCustomers);
-  return customers * this.averagePerCustumer;
+  return customers * this.averagePerCustomer;
 };
 
 DonutShoppe.prototype.generateRandom = function(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor((Math.random() * (max - min +1)) + min);
 };
  
 
@@ -22,6 +22,7 @@ DonutShoppe.prototype.render = function() {
   var dayTotal = 0;
   var addRow = document.createElement('tr');
   var tbl = document.getElementById('donutTable');
+  addRow.setAttribute('id', this.locationName);
   
   if (tbl.rows.length % 2 == 0) {
     addRow.style.background = "#CCCCCC";  
@@ -50,6 +51,21 @@ DonutShoppe.prototype.render = function() {
   tbl.appendChild(addRow);
 
 }; // close render function
+
+
+// create a new function to update an exisiting row?
+DonutShoppe.prototype.updateRow = function() {
+  var dayTotal = 0;
+  var row = document.getElementById(this.locationName);
+  var cells = row.childNodes;
+  for (var i = 1; i < cells.length-1; i++) {
+    //console.log("times through for loop" + (i));
+    var wholeDonuts = Math.ceil(this.hourForecast());
+    cells[i].textContent = wholeDonuts;
+    dayTotal += wholeDonuts;
+  }
+  cells[cells.length-1].textContent = dayTotal;
+};
 
 // creates the table
 var createTable = function(){
@@ -93,13 +109,38 @@ var createTable = function(){
 document.getElementById('donutDiv').appendChild(tbl);
 };
 
-function addNew() {
-  loc = prompt('Location Name?');
-  min = prompt('Minimum customers per hour?');
-  max = prompt('Maximum customers per hour?');
-  average = prompt('Average donuts purchased per customer?');
-  var newLoc = new DonutShoppe(loc, {minCustomers: min, maxCustomers: max, averagePerCustomer: average});
-  addLocation(newLoc);
+// search existing locations for a locationName
+var exist = function(name) {
+  for (var i = 0; i < allLocations.length; i++) {
+    if (name === allLocations[i].locationName) {
+      return i;
+    }
+  }
+  return false;    
+
+};
+
+
+// creates a new Donut Shoppe object, adds it to the array, then renders it at the end of the table
+function addNew(event) {
+  event.preventDefault();
+  loc = document.getElementById('name').value;
+  min = parseInt(document.getElementById('minCustomers').value);
+  max = parseInt(document.getElementById('maxCustomers').value);
+  average = parseFloat(document.getElementById('avgDonuts').value);
+  var check = exist(loc);
+
+  if (check !== false) {
+    allLocations[check].minCustomers = min;
+    allLocations[check].maxCustomers = max;
+    allLocations[check].averagePerCustomer = average;
+    allLocations[check].updateRow();
+  } else {
+    var newLoc = new DonutShoppe(loc, {minCustomers: min, maxCustomers: max, averagePerCustomer: average});
+    addLocation(newLoc);
+    index = allLocations.length - 1;
+    allLocations[index].render();
+  }
 }
 
 function addLocation(store) {
@@ -131,4 +172,11 @@ var allLocations = [downtown, capHill, slu, wedgewood, ballard]
 
 updateTable();
 
+// event listener for refresh button
+var buttonRefresh = document.getElementById('buttonRefresh');
+buttonRefresh.addEventListener('click', updateTable);
+
+// event listener for new location form
+elForm = document.getElementById('inputAddNew');
+elForm.addEventListener('submit', addNew, false);
 
