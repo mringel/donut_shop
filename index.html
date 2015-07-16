@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Top Pot Donuts</title>
+ </head>
+ 
+ <body>
+    <h1 align = "center">Top Pot Donut Forecasts</h1>
+    <h2 align = "center">B31 Week: 2  Day: 3</h2>
+    <h2 align = "center">Matthew Ringel</h2>
+
+    <div id="donutDiv" align="center">
+    </div>
+
+    <hr>
+
+    <button id = "buttonRefresh" type="button">Refresh Table</button>
+
+    <hr>
+
+    <div id="formAddNew">
+      <form id="inputAddNew">
+        <fieldset>
+          <legend>create a new location</legend>
+          <p>
+            <label for="name"> Location name: </label>
+            <input type="text" id="name" placeholder="enter name here">
+          </p>
+          <p>
+            <label for="minCustomers"> Minimum hourly customers: </label>
+            <input type="text" id="minCustomers" placeholder="enter number here">
+          </p>
+          <p>
+            <label for="maxCustomers"> Maximum hourly customers: </label>
+            <input type="text" id="maxCustomers" placeholder="enter number here">
+          </p>
+          <p>
+            <label for="avgDonuts"> Average donuts per customer:</label>
+            <input type="text" id="avgDonuts" placeholder="enter number here">
+          </p>
+          <input type="submit" value="Do it.">
+
+        </fieldset>
+        
+
+      </form>
+
+    </div>
+
+  <script type="text/javascript" src="js/donut.js"></script>
+ </body>
+
+</html>
