@@ -1,0 +1,126 @@
+/* 
+colors
+darkest blue: #272F32;
+lightest blue: #DAEAEF;
+medium blue: #9DBDC6;
+bold red: #FF3D2E;
+*/
+#formAddNew {
+  float: left;
+}
+
+#intro {
+  font-size: 150%;
+  border: 2px solid #272F32;
+  padding: 20px 100px 20px 100px;
+  float: left;
+  width: 500px;
+  height: 511px;
+  border-radius: 10px;
+  background-color: #DAEAEF;
+  margin: 25px 10px 25px 10px ;
+}
+
+#splash {
+  float: left;
+  margin: 25px;
+  border: 2px solid #272F32;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 1000px;
+  height: 550px;
+}
+
+legend {
+  background-color: #272F32; 
+  border: 1px solid #272F32;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-align: left;
+  color: #DAEAEF;
+
+}
+
+fieldset {
+  border: 2px solid #272F32;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: right;
+  width: 400px;
+  background-color: #DAEAEF;
+  margin: 25px;
+  margin-right: 300px;
+}
+
+h2 {
+  text-align: center;
+  color: #FF3D2E;
+  font-size: 400%;
+}
+
+h3 {
+    font-family: 'Passero One', cursive;
+    text-align: left;
+}
+
+body {
+  background-color: #9DBDC6; 
+}
+
+
+tr.even {
+  background-color: #9DBDC6;
+}
+
+tr.odd {
+  background-color: #FFFFFF;
+}
+
+thead {
+  background-color: #272F32;
+  color: #DAEAEF; 
+  font-weight: bold;
+  
+}
+
+td {
+  padding: 9px;
+}
+
+table {
+  border-collapse: separate; 
+  border-radius: 10px;
+  -moz-border-radius : 10px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Passero One', cursive;
+  background-color: #FF3D2E;
+  padding: 20px;
+  border: 2px solid #272F32;
+  border-radius: 25px;
+  color: #272F32;
+  font-size: 600%;
+}
+
+
+#donutDiv {
+  border: 2px solid #272F32;
+  border-radius: 15px;
+  background-color: #DAEAEF;
+  float: left;
+  margin: 25px;
+  padding: 25px;
+}
+
+
+
+.th1 {
+     border-left: none;
+     border-top-left-radius: 10px;
+}
+
+.thLast {
+  border-top-right-radius: 10px;
+}

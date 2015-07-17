@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <link href='http://fonts.googleapis.com/css?family=Passero+One' rel='stylesheet' type='text/css'>
   <meta charset="UTF-8">
-  <title>Top Pot Donuts</title>
+  <title>Minotaur Doughnuts</title>
+  <link href="css/style.css" type="text/css" rel="stylesheet" /> 
  </head>
  
  <body>
-    <h1 align = "center">Top Pot Donut Forecasts</h1>
-    <h2 align = "center">B31 Week: 2  Day: 3</h2>
-    <h2 align = "center">Matthew Ringel</h2>
+    <h1>Minotaur Doughnuts</h1>
+    <h2>Stick your tongue in the pain hole!</h2>
 
+    <div>
+      <div class="image" id="splash">
+        <img src="images/pain_hole.png">
+      </div>
+
+    <div id="intro">
+        <h3>Manly Doughnuts</h3>
+        <p>We dare you to try our signature treat: Pain Holes!  These organic doughnut holes are hand-made from locally-sourced gluten-free flour and infused with jalapeno essence then deep-fried for that artery-clogging taste you crave! </p>
+        <p>Or maybe you'd prefer our Bear Claws!  Made with 100% vegetarian-fed bears from Alaska.  These are sure to be a hit at your next campsite!</p>
+      </div>
+    </div>
     <div id="donutDiv" align="center">
+      <button id = "buttonRefresh" type="button">Refresh Table</button>
+
     </div>
 
-    <hr>
+    
 
-    <button id = "buttonRefresh" type="button">Refresh Table</button>
 
-    <hr>
+  
 
     <div id="formAddNew">
       <form id="inputAddNew">
         <fieldset>
-          <legend>create a new location</legend>
+          <legend>create/edit a location</legend>
           <p>
             <label for="name"> Location name: </label>
             <input type="text" id="name" placeholder="enter name here">
@@ -39,8 +52,9 @@
             <label for="avgDonuts"> Average donuts per customer:</label>
             <input type="text" id="avgDonuts" placeholder="enter number here">
           </p>
-          <input type="submit" value="Do it.">
-
+          <div class="submit">
+            <input type="submit" value="Do it.">
+          </div>
         </fieldset>
         
 

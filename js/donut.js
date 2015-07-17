@@ -25,11 +25,13 @@ DonutShoppe.prototype.render = function() {
   addRow.setAttribute('id', this.locationName);
   
   if (tbl.rows.length % 2 == 0) {
-    addRow.style.background = "#CCCCCC";  
+    // looks backwards, I know, but trust me
+    addRow.setAttribute('class', 'odd');  
   } else{
-    addRow.style.background = "#A4BCC8";
+    addRow.setAttribute('class', 'even');
   };
   var locationCol = document.createElement('td');
+  locationCol.setAttribute('class', 'locCol');
 
   // Set first cell in each row to the name of the location
   locationCol.innerHTML = this.locationName;
@@ -48,12 +50,13 @@ DonutShoppe.prototype.render = function() {
   var totalCol = document.createElement('td');
   totalCol.innerHTML = dayTotal;
   addRow.appendChild(totalCol);
-  tbl.appendChild(addRow);
+
+  tbl.lastChild.appendChild(addRow);
 
 }; // close render function
 
 
-// create a new function to update an exisiting row?
+// updates an existing row
 DonutShoppe.prototype.updateRow = function() {
   var dayTotal = 0;
   var row = document.getElementById(this.locationName);
@@ -70,34 +73,34 @@ DonutShoppe.prototype.updateRow = function() {
 // creates the table
 var createTable = function(){
   var tbl = document.createElement('table');
-  tbl.setAttribute('id', 'donutTable')
-  tbl.cellPadding = "10";
-  tbl.border = "1";
+  tbl.setAttribute('id', 'donutTable');
+  var tblhead = document.createElement('thead');
+
   
   // creates top row for header information
-  var topRow = tbl.insertRow();
+  var topRow = tblhead.insertRow();
   
   // create header label for locations
   var lCell = topRow.insertCell();
   lCell.rowSpan = "2";
+  lCell.setAttribute('class', 'th1');
   lCell.appendChild(document.createTextNode('Location'));
-  //lCell.style.border = '1px solid black';
   
   // create header label for hours
   var hCell = topRow.insertCell();
   hCell.colSpan = "12";
   hCell.setAttribute('align', 'center');
   hCell.appendChild(document.createTextNode('Hours'));
-  //hCell.style.border = '1px solid black';
+  
   
   // create header label for daily totals
   var tCell = topRow.insertCell();
   tCell.rowSpan = "2";
+  tCell.setAttribute('class','thLast');
   tCell.appendChild(document.createTextNode('Daily Total'));
-  //tCell.style.border = '1px solid black';
   
   // create a row for hour header and populate with for loop
-  var hRow = tbl.insertRow();
+  var hRow = tblhead.insertRow();
   
   for (var i = 0; i < 12; i++) {
     var newCell = hRow.insertCell();
@@ -107,6 +110,8 @@ var createTable = function(){
     }
 
 document.getElementById('donutDiv').appendChild(tbl);
+tbl.appendChild(tblhead);
+tbl.appendChild(document.createElement('tbody'));
 };
 
 // search existing locations for a locationName
