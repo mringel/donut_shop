@@ -185,3 +185,4 @@ buttonRefresh.addEventListener('click', updateTable);
 elForm = document.getElementById('inputAddNew');
 elForm.addEventListener('submit', addNew, false);
 
+

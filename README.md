@@ -7,5 +7,6 @@ Heading font is Passero one from google fonts.
 
 Color scheme inspired by the "Clean Modern" color scheme found on color.adobe.com.
 
-Pain hole courtesy of Gravity Falls on Cartoon Network.
+Pain hole courtesy of Gravity Falls on Disney Channel.
 
+baby minotaur used without permission from http://s147.photobucket.com/user/jayfabares/library/?sort=3&page=1
