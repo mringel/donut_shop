@@ -233,8 +233,9 @@ table {
 /* entire container, keeps perspective */
 .flip-container {
   perspective: 1000;
-  float: right;
-  clear: both;
+  position: absolute;
+  left: 800px;
+  top: 1200px;
   margin-right: 25px;
 }
   /* flip the pane when hovered */
